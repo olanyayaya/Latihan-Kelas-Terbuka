@@ -1,0 +1,73 @@
+# GUI -> Graphical User Interface
+
+import tkinter as tk
+from tkinter import ttk
+
+
+# Init
+window = tk.Tk()
+window.configure(bg="#17161b")
+window.geometry("430x340")
+window.title("Kalkulator ceritanya tahap 1")
+window.resizable(None,None)
+
+
+equation = ""
+
+def show(value):
+    global equation
+    equation += value
+    input_frame.config(text=equation)
+
+def clear():
+    global equation
+    equation = ""
+    input_frame.config(text=equation)
+
+def calculate ():
+    global equation
+    result = ""
+    if equation !="":
+        try:
+            result = eval (equation)
+        except:
+            result = "error"
+            equation = ""
+    input_frame.config(text=result)
+
+# frame input
+input_frame = tk.Label(window,width=30,height=2,text="",font=("Arial",24))
+# penempatan grid, pack, place
+input_frame.pack()
+
+# Button line 1)
+tombol_hapus = tk.Button(window,text="C",width=15,height=2,bd=1,fg="#fff",bg="#3697f5",font=("Arial",9,"bold"),command=lambda: clear()).place(x=10,y=110)
+tombol_bagi = tk.Button(window,text="/",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("/")).place(x=125,y=110)
+tombol_persen = tk.Button(window,text="%",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("%")).place(x=240,y=110)
+tombol_kali = tk.Button(window,text="*",width=8,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("*")).place(x=355,y=110)
+
+# Button line 2
+tombol_angka_tj = tk.Button(window,text="7",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("7")).place(x=10,y=150)
+tombol_angka_dlp = tk.Button(window,text="8",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("8")).place(x=125,y=150)
+tombol_angka_sb = tk.Button(window,text="9",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("9")).place(x=240,y=150)
+tombol_tambah = tk.Button(window,text="+",width=8,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("+")).place(x=355,y=150)
+
+# Button line 3
+tombol_angka_emp = tk.Button(window,text="4",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("4")).place(x=10,y=190)
+tombol_angka_lm = tk.Button(window,text="5",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("5")).place(x=125,y=190)
+tombol_angka_nm = tk.Button(window,text="6",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("6")).place(x=240,y=190)
+tombol_kurang = tk.Button(window,text="-",width=8,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("-")).place(x=355,y=190)
+
+# Button line 4
+tombol_angka_st = tk.Button(window,text="1",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("1")).place(x=10,y=230)
+tombol_angka_dw = tk.Button(window,text="2",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("2")).place(x=125,y=230)
+tombol_angka_tg = tk.Button(window,text="3",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("3")).place(x=240,y=230)
+tombol_sama_dengan = tk.Button(window,text="=",width=8,height=5,bd=1,fg="#fff",bg="#ffa500",font=("Arial",9,"bold"),command=lambda: calculate ()).place(x=355,y=230)
+
+# Button line 5
+tombol_angka_nol = tk.Button(window,text="0",width=32,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show("0")).place(x=10,y=270)
+tombol_koma = tk.Button(window,text=",",width=15,height=2,bd=1,fg="#fff",bg="#2a2d36",font=("Arial",9,"bold"),command=lambda: show(",")).place(x=240,y=270)
+
+
+# Main Loop window
+window.mainloop()
